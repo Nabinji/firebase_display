@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "618863015910",
+    "firebase_url": "https://fir-display-1fa97-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "fir-display-1fa97",
     "storage_bucket": "fir-display-1fa97.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "618863015910-lvitlh31ikac6ll8ggsij17r538kdres.apps.googleusercontent.com",
+          "client_id": "618863015910-462cthqh77mecclpfp86oj56um4044v9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebase_display",
+            "certificate_hash": "777c96b91862c4d53a7b64ded43db917dd9630a5"
+          }
+        },
+        {
+          "client_id": "618863015910-eovh90talk44rkqbdjocccrcvptkkjbl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "618863015910-lvitlh31ikac6ll8ggsij17r538kdres.apps.googleusercontent.com",
+              "client_id": "618863015910-eovh90talk44rkqbdjocccrcvptkkjbl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

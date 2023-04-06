@@ -1,87 +1,61 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const ImageSliderFirebaseStorage(),
-    );
-  }
-}
-
-class ImageSliderFirebaseStorage extends StatefulWidget {
-  const ImageSliderFirebaseStorage({Key? key}) : super(key: key);
+class FirestoreImageDisplay extends StatefulWidget {
+  const FirestoreImageDisplay({super.key});
 
   @override
-  State<ImageSliderFirebaseStorage> createState() =>
-      _ImageSliderFirebaseStorageState();
+  State<FirestoreImageDisplay> createState() => _MyWidgetState();
 }
 
-class _ImageSliderFirebaseStorageState
-    extends State<ImageSliderFirebaseStorage> {
+class _MyWidgetState extends State<FirestoreImageDisplay> {
   late String imageUrl;
-  late String imageurll;
+  late String imageUrl1;
   final storage = FirebaseStorage.instance;
-
   @override
   void initState() {
     super.initState();
     // Set the initial value of imageUrl to an empty string
     imageUrl = '';
-    imageurll = '';
-    // Retrieve the image from Firebase Storage
+    imageUrl1 = '';
+    //Retrieve the imge grom Firebase Storage
     getImageUrl();
   }
 
   Future<void> getImageUrl() async {
-    // Get the reference to the image file in Firebase Storage
+    // Get the feference to the image file in Firebase Storage
     final ref = storage.ref().child('banner.jpg');
-    final reff = storage.ref().child('java.jpg');
-    // Get the download URL for the image
+    final ref1 = storage.ref().child('java.jpg');
+    // Get teh inageUrl to download URL
     final url = await ref.getDownloadURL();
-    final urll = await reff.getDownloadURL();
-    // Set the imageUrl to the download URL
+    final url1 = await ref1.getDownloadURL();
     setState(() {
       imageUrl = url;
-      imageurll = urll;
+      imageUrl1 = url1;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Display image from fiebase "),
+      ),
       body: Column(
         children: [
           SizedBox(
-            height: 300,
-            child: Image(
-              image: NetworkImage(imageUrl),
-              fit: BoxFit.fill,
-            ),
-          ),
-          SizedBox(
-            height: 300,
-            child: Card(
+              height: 300,
               child: Image(
-                image: NetworkImage(imageurll),
-                fit: BoxFit.fill,
-              ),
-            ),
+                image: NetworkImage(imageUrl),
+                fit: BoxFit.cover,
+              )),
+          Card(
+            child: SizedBox(
+                height: 300,
+                child: Image(
+                  image: NetworkImage(imageUrl1),
+                  fit: BoxFit.cover,
+                )),
           )
         ],
       ),
