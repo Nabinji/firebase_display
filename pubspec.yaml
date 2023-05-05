@@ -41,7 +41,7 @@ dependencies:
   shared_preferences: ^2.0.20
   cloud_firestore: ^4.4.5
   firebase_database: ^10.1.0
-  speech_recognition: ^0.3.0+1
+ 
 
 dev_dependencies:
   flutter_test:

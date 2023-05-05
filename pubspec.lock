@@ -469,14 +469,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
-  speech_recognition:
-    dependency: "direct main"
-    description:
-      name: speech_recognition
-      sha256: "789154d8effe4443973e3f6a77be1a1d36e8097d11cf5dd61ce659592d6e4a3d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.0+1"
   stack_trace:
     dependency: transitive
     description:
