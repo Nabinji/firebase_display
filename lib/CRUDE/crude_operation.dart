@@ -13,9 +13,12 @@ class _MyWidgetState extends State<CRUDEoperation> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _snController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   final CollectionReference _items =
       FirebaseFirestore.instance.collection('items');
+
+  String _searchText = '';
   // for create operation
   Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
     await showModalBottomSheet(
@@ -159,21 +162,60 @@ class _MyWidgetState extends State<CRUDEoperation> {
         const SnackBar(content: Text("You have successfully deleted a itmes")));
   }
 
+  void _onSearchChanged(String value) {
+    setState(() {
+      _searchText = value;
+    });
+  }
+
+  bool isSearchClicked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("CRUDE Operation "),
+        backgroundColor: Colors.blue,
+        title: isSearchClicked
+            ? Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 95, 226, 77),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: TextField(
+                  controller: _searchController,
+                  onChanged: _onSearchChanged,
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(16, 20, 16, 12),
+                      hintStyle: TextStyle(color: Colors.black),
+                      border: InputBorder.none,
+                      hintText: 'Search..'),
+                ),
+              )
+            : const Text('CRUDE Operaion'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  isSearchClicked = !isSearchClicked;
+                });
+              },
+              icon: Icon(isSearchClicked ? Icons.close : Icons.search))
+        ],
       ),
       body: StreamBuilder(
         stream: _items.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
           if (streamSnapshot.hasData) {
+            final List<DocumentSnapshot> items = streamSnapshot.data!.docs
+                .where((doc) => doc['name'].toLowerCase().contains(
+                      _searchText.toLowerCase(),
+                    ))
+                .toList();
             return ListView.builder(
-                itemCount: streamSnapshot.data!.docs.length,
+                itemCount: items.length,
                 itemBuilder: (context, index) {
-                  final DocumentSnapshot documentSnapshot =
-                      streamSnapshot.data!.docs[index];
+                  final DocumentSnapshot documentSnapshot = items[index];
                   return Card(
                     color: const Color.fromARGB(255, 88, 136, 190),
                     shape: RoundedRectangleBorder(
