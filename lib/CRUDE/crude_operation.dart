@@ -18,7 +18,7 @@ class _MyWidgetState extends State<CRUDEoperation> {
   final CollectionReference _items =
       FirebaseFirestore.instance.collection('items');
 
-  String _searchText = '';
+  String searchText = '';
   // for create operation
   Future<void> _create([DocumentSnapshot? documentSnapshot]) async {
     await showModalBottomSheet(
@@ -164,7 +164,7 @@ class _MyWidgetState extends State<CRUDEoperation> {
 
   void _onSearchChanged(String value) {
     setState(() {
-      _searchText = value;
+      searchText = value;
     });
   }
 
@@ -209,7 +209,7 @@ class _MyWidgetState extends State<CRUDEoperation> {
           if (streamSnapshot.hasData) {
             final List<DocumentSnapshot> items = streamSnapshot.data!.docs
                 .where((doc) => doc['name'].toLowerCase().contains(
-                      _searchText.toLowerCase(),
+                      searchText.toLowerCase(),
                     ))
                 .toList();
             return ListView.builder(
