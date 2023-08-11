@@ -17,23 +17,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        // theme: ThemeData.dark().copyWith(
-        //   scaffoldBackgroundColor: const Color.fromARGB(255, 224, 90, 241),
-        // ),
-        home: ImageSliderFirebase()
-        // const CRUDEoperation()
+      debugShowCheckedModeBanner: false,
+      home: ImageSliderFirebase(),
+      // const CRUDEoperation()
 
-        // StreamBuilder(
-        //     stream: FirebaseAuth.instance.authStateChanges(),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.hasData) {
-        //         return const HomePage();
-        //       } else {
-        //         return const LoginScreen();
-        //       }
-        //     }),
-        );
+      // StreamBuilder(
+      //     stream: FirebaseAuth.instance.authStateChanges(),
+      //     builder: (context, snapshot) {
+      //       if (snapshot.hasData) {
+      //         return const HomePage();
+      //       } else {
+      //         return const LoginScreen();
+      //       }
+      //     }),
+    );
   }
 }

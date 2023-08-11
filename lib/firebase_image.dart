@@ -23,10 +23,10 @@ class _MyWidgetState extends State<FirestoreImageDisplay> {
   }
 
   Future<void> getImageUrl() async {
-    // Get the feference to the image file in Firebase Storage
+    // Get the reference to the image file in Firebase Storage
     final ref = storage.ref().child('banner.jpg');
     final ref1 = storage.ref().child('java.jpg');
-    // Get teh inageUrl to download URL
+    // Get teh imageUrl to download URL
     final url = await ref.getDownloadURL();
     final url1 = await ref1.getDownloadURL();
     setState(() {
