@@ -36,10 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.7.1
   firebase_storage: ^11.0.15
+  cloud_firestore: ^4.4.5
+  image_picker: ^1.0.4
   firebase_auth: ^4.3.0
   google_sign_in: ^6.0.2
   shared_preferences: ^2.0.20
-  cloud_firestore: ^4.4.5
   firebase_database: ^10.1.0
   carousel_slider: ^4.2.1
   url_launcher: ^6.1.12

@@ -1,11 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_display/CRUDE/crude_operation.dart';
-
+import 'package:firebase_display/Upload%20Image%20&%20Data%20in%20FirebaseStorage/upload_file.dart';
 import 'package:flutter/material.dart';
 
-import 'firebase_image_slider.dart';
-
 Future<void> main() async {
+  // Connets your flutter project with firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -18,18 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ImageSliderFirebase(),
-      // const CRUDEoperation()
-
-      // StreamBuilder(
-      //     stream: FirebaseAuth.instance.authStateChanges(),
-      //     builder: (context, snapshot) {
-      //       if (snapshot.hasData) {
-      //         return const HomePage();
-      //       } else {
-      //         return const LoginScreen();
-      //       }
-      //     }),
+      home: UploadImageAndMore(),
     );
   }
 }

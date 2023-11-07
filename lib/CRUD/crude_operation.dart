@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CRUDEoperation extends StatefulWidget {
   const CRUDEoperation({super.key});
@@ -59,24 +60,27 @@ class _MyWidgetState extends State<CRUDEoperation> {
                       labelText: 'Number', hintText: 'eg.10'),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                ElevatedButton(
-                    onPressed: () async {
-                      final String name = _nameController.text;
-                      final int? sn = int.tryParse(_snController.text);
-                      final int? number = int.tryParse(_numberController.text);
-                      if (number != null) {
-                        await _items
-                            .add({"name": name, "number": number, "sn": sn});
-                        _nameController.text = '';
-                        _snController.text = '';
-                        _numberController.text = '';
+                Center(
+                  child: ElevatedButton(
+                      onPressed: () async {
+                        final String name = _nameController.text;
+                        final int? sn = int.tryParse(_snController.text);
+                        final int? number =
+                            int.tryParse(_numberController.text);
+                        if (number != null) {
+                          await _items
+                              .add({"name": name, "number": number, "sn": sn});
+                          _nameController.text = '';
+                          _snController.text = '';
+                          _numberController.text = '';
 
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    child: const Text("Create"))
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      child: const Text("Create")),
+                )
               ],
             ),
           );
@@ -191,7 +195,7 @@ class _MyWidgetState extends State<CRUDEoperation> {
                       hintText: 'Search..'),
                 ),
               )
-            : const Text('CRUDE Operaion'),
+            : const Text('CRUD Operaion'),
         centerTitle: true,
         actions: [
           IconButton(
