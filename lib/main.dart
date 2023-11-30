@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_display/Upload%20Image%20&%20Data%20in%20FirebaseStorage/upload_file.dart';
+import 'package:firebase_display/real_time_database.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UploadImageAndMore(),
+      home: RealTimeDatabase(),
     );
   }
 }
