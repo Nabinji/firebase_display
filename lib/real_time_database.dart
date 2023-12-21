@@ -39,7 +39,7 @@ class _RealTimeDatabaseState extends State<RealTimeDatabase> {
           ElevatedButton(
             onPressed: () {
               // Check if any of the text fields are emply?
-              if (nameController.text.isEmpty ||
+              if (nameController.text.isEmpty  ||
                   addressController.text.isEmpty ||
                   emailController.text.isEmpty ||
                   passwordController.text.isEmpty) {
